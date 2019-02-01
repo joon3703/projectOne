@@ -3,6 +3,8 @@
   <head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import Google Font [Not needed here if it's in CSS]-->
+    <!-- <link href='https://fonts.gstatic.com/s/leckerlione/v9/V8mCoQH8VCsNttEnxnGQ-1idKpZdJNE9Fg.woff2' rel='stylesheet' type='text/css'> -->
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
@@ -17,14 +19,15 @@
 
   <body>
     <div class="container">
-      <h1>CHESS GAME</h1>
-
-      <div id="board1" style="width: 400px"></div>
-
-      <div id="board2" style="width: 400px"></div>
-      <input type="button" id="startBtn" value="Start" />
-      <input type="button" id="clearBtn" value="Clear" />   
-    
+      <div class="col s12 m10" style="background:silver">
+        <h1 class="header">CHESS MATCH</h1>
+        <section class="main">
+        
+        <div id="board"></div>
+        <input class="btn" type="button" id="startBtn" value="Start" />
+        <input class="btn" type="button" id="clearBtn" value="Clear" /> 
+      </section>
+      </div>
     </div>
     
     <!-- jQuery -->
