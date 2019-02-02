@@ -1,11 +1,12 @@
 /*!
- * chessboard.js v0.3.0
+ * chessboard.js v0.3.1
  *
- * Copyright 2013 Chris Oakman
+ * Copyright 2019 T.M. Sulik
+ *
+ * Based on the 2013 app by Chris Oakman
  * Released under the MIT license
  * https://github.com/oakmac/chessboardjs/blob/master/LICENSE
  *
- * Date: 10 Aug 2013
  */
 
 /* fonts */
@@ -28,20 +29,26 @@
   clear: both;
 }
 
+/* font settings */
+h3 {
+  font-size: 2em;
+  background: #314241; /* Outer space */
+  color: #faf6ea; /* Bianca */
+  padding: 8px;
+}
+
 /* buttons */
 .btn {
   margin: 20px;
+  background-color:#08666e; /* Attol */
+  color:#faf6ea; /* Bianca */
 }
+
 /* board */
 .board-b72b1 {
   border: 2px solid black;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-}
-
-#board {
-  width: 50%;
-  margin: 20px;
 }
 
 /* square */
@@ -61,19 +68,15 @@
 /* white square */
 .white-1e1d7 {
   background-color: #c37a5a; /* Antique brass */
-  /* color: yellow; Yellow might look better than white? */
   color:white;
   text-shadow: 1px 1px black;
-
 }
 
 /* black square */
 .black-3c85d {
   background-color: #08666e; /* Attol */
-  /* color: yellow; */
   color:white;
   text-shadow: 1px 1px black;
-
 }
 
 /* highlighted square */
@@ -99,13 +102,61 @@
   left: 2px;
 }
 
-.main { /* This prevents the board from spilling outside the jumbotron at the smallest widths. */
-  width: 650px;
+#board {
+  width: 100%;
 }
 
+.main { /* This prevents the board from spilling outside the jumbotron at the smallest widths. */
+  width: 340px;
+}
+#number-column {
+  background: #314241; /* Outer space */
+  color:  #faf6ea; /* Bianca */
+  padding-right: 12px;
+  text-align: right;
+  width: 30px;
+}
+.scoresheet-header-white {
+  background: #314241; /* Outer space */
+  color:  #faf6ea; /* Bianca */
+  text-align: center;
+  font-weight: 900;
+}
+.scoresheet-header-black {
+  background: #faf6ea; /* Bianca */
+  color: #314241; /* Outer space */
+  text-align: center;
+  font-weight: 800;
+}
+.what {
+  color:black;
+}
+
+#white-column {
+  background: #faf6ea; /* Bianca */
+  color: #314241; /* Outer space */
+  float: left;
+  width: 25%;
+}
+#black-column {
+  background: #314241; /* Outer space */
+  color:  #faf6ea; /* Bianca */
+  float: left;
+  width: 25%;
+}
+.scoresheet-header {
+  width: 60%;
+  text-align: center;
+}
+.scoresheet {
+  margin-bottom: 20px;
+}
 .header {
-  color: teal;/* #08666e; /* Atoll */
+  color: teal;
   text-shadow: 2px 2px black;
   font-family: "Leckerli One", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 20px;
+  text-align: center;
+  width: 100%;
+  /* margin-left: 40px; */
+  /* padding-left: 40px; */
 }
