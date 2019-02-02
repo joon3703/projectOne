@@ -13,18 +13,37 @@
     <link rel="stylesheet" type="text/css" href="css/chessboard-0.3.0.css">
 
     <title>Project One</title>
+  
   </head>
 
   <body>
     <div class="container">
-      <h1>CHESS GAME</h1>
-
-      <div id="board1" style="width: 400px"></div>
-
-      <div id="board2" style="width: 400px"></div>
-      <input type="button" id="startBtn" value="Start" />
-      <input type="button" id="clearBtn" value="Clear" />   
-    
+      <div class="row" style="background:silver">
+        <h1 class="header col l12">CHESS MATCH</h1>
+        <hr class="what">
+        <div class="col l1 column-numbers">x</div>
+        <section class="col l7">
+          <div class="main">
+            <div id="board"></div>
+            <input class="btn" type="button" id="startBtn" value="Start"/>
+            <input class="btn" type="button" id="clearBtn" value="Clear"/>
+          </div> 
+        </section>
+        <section class="col l4 scoresheet">
+          <div class="main">
+          <h3 class="scoresheet-header">Scoresheet</h3>
+          <div id="number-column" class="col l1">
+            <p class="move-number"></p>
+          </div>
+          <div id="white-column" class="col l3">
+            <p class="white-moves"></p>
+          </div>
+          <div id="black-column" class="col l3">
+            <p class="black-moves"></p>
+          </div>
+        </div>
+        </section>
+      </div>
     </div>
     
     <!-- jQuery -->

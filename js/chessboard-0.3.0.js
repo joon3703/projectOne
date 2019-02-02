@@ -82,7 +82,6 @@ function fenToPieceCode(piece) {
   if (piece.toLowerCase() === piece) {
     return 'b' + piece.toUpperCase();
   }
-
   // white piece
   return 'w' + piece.toUpperCase();
 }
@@ -1664,6 +1663,7 @@ function addEvents() {
     $(window).on('touchmove', touchmoveWindow);
     $(window).on('touchend', touchendWindow);
   }
+  
 }
 
 function initDom() {
@@ -1686,6 +1686,7 @@ function initDom() {
 
   // set the size and draw the board
   widget.resize();
+
 }
 
 function init() {
