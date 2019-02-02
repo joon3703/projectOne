@@ -1,8 +1,9 @@
-var board = ChessBoard('board', {
-  draggable: true,
-  dropOffBoard: 'trash',
-  sparePieces: true
-});
+var abChess = {};
+var options = {
+    animated: false
+};
+abChess = new AbChess("chessboard", options);
+abChess.setFEN();
 
 $('#startBtn').on('click', board.start);
 $('#clearBtn').on('click', board.clear);
