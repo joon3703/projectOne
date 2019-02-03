@@ -4,10 +4,22 @@
 // Copyright (c) 2017 Nimzozo
 */
 
+@font-face {
+    font-family: 'Leckerli One';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Leckerli One'), local('LeckerliOne-Regular'), url(https://fonts.gstatic.com/s/leckerlione/v9/V8mCoQH8VCsNttEnxnGQ-1idKpZdJNE9Fg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  } 
+
+  body {
+    background-image: url('../img/floral-ornament-with-birds.jpg');
+   }
+
 .squares {
     position: relative;
     display: inline-block;
-    border: 1px solid saddlebrown;
+    border: 2px solid black;
     vertical-align: top;
 }
 
@@ -20,13 +32,33 @@
     vertical-align: top;
 }
 
+h3 {
+    font-size: 2em;
+    background: #314241; /* Outer space */
+    color: #faf6ea; /* Bianca */
+    padding: 8px;
+  }
+
+  .btn {
+    margin: 20px;
+    background-color:#08666e; /* Attol */
+    color:#faf6ea; /* Bianca */
+  }
+
 .square_white {
-    background: wheat;
+    background-color: #c37a5a; /* Antique brass */
 }
 
 .square_black {
-    background: burlywood;
+    background-color: #08666e; /* Attol */
 }
+.header {
+    color: teal;
+    text-shadow: 2px 2px black;
+    font-family: "Leckerli One", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    width: 100%;
+  }
 
 .square__canvas {
     position: absolute;
@@ -140,3 +172,50 @@
 .promotion-button:hover {
     background-color: skyblue;
 }
+
+#number-column {
+    background: #314241; /* Outer space */
+    color:  #faf6ea; /* Bianca */
+    padding-right: 12px;
+    text-align: right;
+    width: 30px;
+  }
+  .scoresheet-header-white {
+    background: #314241; /* Outer space */
+    color:  #faf6ea; /* Bianca */
+    text-align: center;
+    font-weight: 900;
+  }
+  .scoresheet-header-black {
+    background: #faf6ea; /* Bianca */
+    color: #314241; /* Outer space */
+    text-align: center;
+    font-weight: 800;
+  }
+  #white-column {
+    background: #faf6ea; /* Bianca */
+    color: #314241; /* Outer space */
+    float: left;
+    width: 85px;
+  }
+  #black-column {
+    background: #314241; /* Outer space */
+    color:  #faf6ea; /* Bianca */
+    float: left;
+    width: 85px;
+  }
+  .scoresheet-header {
+    width: 200px;
+    text-align: center;
+    margin-top: 0;
+  }
+  .scoresheet {
+    margin-bottom: 20px;
+  }
+  .header {
+    color: teal;
+    text-shadow: 2px 2px black;
+    font-family: "Leckerli One", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    width: 100%;
+  }
