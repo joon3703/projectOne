@@ -16,21 +16,46 @@
   
   </head>
 
-  <body>
+  <body onresize="adjustForSmallScreen()">
     <div class="container">
+      <div class="row banner">
+        <h1 class="header col l9">CHESS MATCH</h1>
+
+        <div id="user-container">
+          <div id="user-pic"></div>
+          <div id="user-name"></div>
+          <a class="waves-effect waves-light btn"><i class="material-icons medium left">account_box</i>Sign-in with Google</a>
+          <input class="btn" id="sign-out" type="button"  value="Sign-out"/>
+        </div>
+      </div>
       <div class="row" style="background:silver">
-        <h1 class="header col l12">CHESS MATCH</h1>
-        <hr class="what">
-        <div class="col l1 column-numbers">x</div>
-        <section class="col l7">
-          <div class="main">
-            <div id="board"></div>
-            <input class="btn" type="button" id="startBtn" value="Start"/>
-            <input class="btn" type="button" id="clearBtn" value="Clear"/>
-          </div> 
+
+        <section class="col l9">
+          <div id="board"></div>
+
+          <input type="button" id="startPositionBtn" value="Start Position" />
+
+
+          <input class="btn" type="button" id="startBtn" value="Start"/>
+          <input class="btn" type="button" id="clearBtn" value="Clear"/>
+          <input class="btn" type="button" id="submitBtn" value="Submit"/>
+
+          <div class="chatbox">
+            <h3>CHAT  <i class="material-icons small">chat_bubble_outline</i></h3>
+
+            <div class="input-field col l10">
+              <textarea id="text-area" class="materialize-textarea"></textarea>
+              <label for="textarea1">Message</label>
+            </div>
+            <input class="btn" type="button" id="chatBtn" value="Send"/>
+
+            
+          </div>
+
+
+
         </section>
-        <section class="col l4 scoresheet">
-          <div class="main">
+        <section class="col l3 scoresheet">
           <h3 class="scoresheet-header">Scoresheet</h3>
           <div id="number-column" class="col l1">
             <p class="move-number"></p>
@@ -41,7 +66,6 @@
           <div id="black-column" class="col l3">
             <p class="black-moves"></p>
           </div>
-        </div>
         </section>
       </div>
     </div>

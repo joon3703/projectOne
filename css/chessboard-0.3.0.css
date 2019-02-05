@@ -3,14 +3,13 @@
  *
  * Copyright 2019 T.M. Sulik
  *
- * Based on the 2013 app by Chris Oakman
+ * Modification of the 2013 app by Chris Oakman
  * Released under the MIT license
  * https://github.com/oakmac/chessboardjs/blob/master/LICENSE
  *
  */
 
 /* fonts */
-
  @font-face {
   font-family: 'Leckerli One';
   font-style: normal;
@@ -36,15 +35,29 @@ h3 {
   color: #faf6ea; /* Bianca */
   padding: 8px;
 }
+.banner {
+  background: silver;
+  margin-top: 20px;
+}
+.header {
+  color: teal;
+  text-shadow: 2px 2px black;
+  font-family: "Leckerli One", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  width: 100%;
+}
 
 /* buttons */
 .btn {
-  margin: 20px;
+  margin: 10px;
   background-color:#08666e; /* Attol */
   color:#faf6ea; /* Bianca */
 }
 
 /* board */
+#board {
+  margin: 2%;
+}
 .board-b72b1 {
   border: 2px solid black;
   -moz-box-sizing: content-box;
@@ -101,20 +114,15 @@ h3 {
   top: 2px;
   left: 2px;
 }
-
-#board {
-  width: 100%;
-}
-
-.main { /* This prevents the board from spilling outside the jumbotron at the smallest widths. */
-  width: 340px;
+#sign-out {
+  float: right;
 }
 #number-column {
   background: #314241; /* Outer space */
   color:  #faf6ea; /* Bianca */
   padding-right: 12px;
   text-align: right;
-  width: 30px;
+  width: 18%;
 }
 .scoresheet-header-white {
   background: #314241; /* Outer space */
@@ -128,35 +136,22 @@ h3 {
   text-align: center;
   font-weight: 800;
 }
-.what {
-  color:black;
-}
-
 #white-column {
   background: #faf6ea; /* Bianca */
   color: #314241; /* Outer space */
   float: left;
-  width: 25%;
+  width: 41%;
 }
 #black-column {
   background: #314241; /* Outer space */
   color:  #faf6ea; /* Bianca */
   float: left;
-  width: 25%;
+  width: 41%;
 }
 .scoresheet-header {
-  width: 60%;
+  width: 100%;
   text-align: center;
 }
 .scoresheet {
   margin-bottom: 20px;
-}
-.header {
-  color: teal;
-  text-shadow: 2px 2px black;
-  font-family: "Leckerli One", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-align: center;
-  width: 100%;
-  /* margin-left: 40px; */
-  /* padding-left: 40px; */
 }

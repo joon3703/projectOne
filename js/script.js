@@ -7,6 +7,40 @@ var board = ChessBoard('board', {
 $('#startBtn').on('click', board.start);
 $('#clearBtn').on('click', board.clear);
 
+$(window).resize(board.resize);
+
+// onChange function starts here.
+// Open the console log and move a piece.
+// This function takes in the old position (of the entire board, 
+// written as a FEN string) and the new position.
+// By comparing the two positions, we can write a JS function
+// that returns just the piece moved in Algebraic Chess Notation
+// to populate the columns on the Scoresheet.
+// Algebraic notation: 
+// http://blog.chesshouse.com/how-to-read-and-write-algebraic-chess-notation/
+// Forsyth–Edwards Notation:
+// https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation#Examples
+
+var onChange = function(oldPos, newPos) {
+  console.log("Position changed:");
+  console.log("Old position: " + ChessBoard.objToFen(oldPos));
+  console.log("New position: " + ChessBoard.objToFen(newPos));
+  console.log("--------------------");
+};
+
+var cfg = {
+  draggable: true,
+  position: 'start',
+  onChange: onChange
+};
+
+var board = ChessBoard('board', cfg);
+
+$('#startPositionBtn').on('click', board.start);
+
+// onChange ends here.
+// This function disables the original START and CLEAR buttons.
+
 var moves = [
   { white:"e4" , black:"e5" },
   { white:"Nf3" , black:"Nc6" },
@@ -37,6 +71,14 @@ function notateMoves() {
     $('.move-number').append("<p>" + (i+1) + "</p>");
     $('.white-moves').append("<p>" + moves[i].white + "</p>");
     $('.black-moves').append("<p>" + moves[i].black + "</p>");
+  }
+}
+
+function adjustForSmallScreen() {
+  if(window.outerWidth < 455) {
+    $('#board').width('350px');
+  } else {
+    $('#board').width('100%');
   }
 }
 
