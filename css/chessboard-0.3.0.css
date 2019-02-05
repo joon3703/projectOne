@@ -1,0 +1,157 @@
+/*!
+ * chessboard.js v0.3.1
+ *
+ * Copyright 2019 T.M. Sulik
+ *
+ * Modification of the 2013 app by Chris Oakman
+ * Released under the MIT license
+ * https://github.com/oakmac/chessboardjs/blob/master/LICENSE
+ *
+ */
+
+/* fonts */
+ @font-face {
+  font-family: 'Leckerli One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Leckerli One'), local('LeckerliOne-Regular'), url(https://fonts.gstatic.com/s/leckerlione/v9/V8mCoQH8VCsNttEnxnGQ-1idKpZdJNE9Fg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+} 
+
+/* body */
+ body {
+  background-image: url('../img/floral-ornament-with-birds.jpg');
+ }
+
+/* clearfix */
+.clearfix-7da63 {
+  clear: both;
+}
+
+/* font settings */
+h3 {
+  font-size: 2em;
+  background: #314241; /* Outer space */
+  color: #faf6ea; /* Bianca */
+  padding: 8px;
+}
+.banner {
+  background: silver;
+  margin-top: 20px;
+}
+.header {
+  color: teal;
+  text-shadow: 2px 2px black;
+  font-family: "Leckerli One", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  width: 100%;
+}
+
+/* buttons */
+.btn {
+  margin: 10px;
+  background-color:#08666e; /* Attol */
+  color:#faf6ea; /* Bianca */
+}
+
+/* board */
+#board {
+  margin: 2%;
+}
+.board-b72b1 {
+  border: 2px solid black;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* square */
+.square-55d63 {
+  float: left;
+  position: relative;
+
+  /* disable any native browser highlighting */
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+/* white square */
+.white-1e1d7 {
+  background-color: #c37a5a; /* Antique brass */
+  color:white;
+  text-shadow: 1px 1px black;
+}
+
+/* black square */
+.black-3c85d {
+  background-color: #08666e; /* Attol */
+  color:white;
+  text-shadow: 1px 1px black;
+}
+
+/* highlighted square */
+.highlight1-32417, .highlight2-9c5d2 {
+  -webkit-box-shadow: inset 0 0 3px 3px yellow;
+  -moz-box-shadow: inset 0 0 3px 3px yellow;
+  box-shadow: inset 0 0 3px 3px yellow;
+}
+
+/* notation */
+.notation-322f9 {
+  cursor: default;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  position: absolute;
+}
+.alpha-d2270 {
+  bottom: 1px;
+  right: 3px;
+}
+.numeric-fc462 {
+  top: 2px;
+  left: 2px;
+}
+#sign-out {
+  float: right;
+}
+#number-column {
+  background: #314241; /* Outer space */
+  color:  #faf6ea; /* Bianca */
+  padding-right: 12px;
+  text-align: right;
+  width: 18%;
+}
+.scoresheet-header-white {
+  background: #314241; /* Outer space */
+  color:  #faf6ea; /* Bianca */
+  text-align: center;
+  font-weight: 900;
+}
+.scoresheet-header-black {
+  background: #faf6ea; /* Bianca */
+  color: #314241; /* Outer space */
+  text-align: center;
+  font-weight: 800;
+}
+#white-column {
+  background: #faf6ea; /* Bianca */
+  color: #314241; /* Outer space */
+  float: left;
+  width: 41%;
+}
+#black-column {
+  background: #314241; /* Outer space */
+  color:  #faf6ea; /* Bianca */
+  float: left;
+  width: 41%;
+}
+.scoresheet-header {
+  width: 100%;
+  text-align: center;
+}
+.scoresheet {
+  margin-bottom: 20px;
+}
