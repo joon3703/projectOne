@@ -1,3 +1,5 @@
+// OUR WORKING JS PART
+// Populate the Chessboard
 var abChess = {};
 var options = {
     animated: false
@@ -5,8 +7,18 @@ var options = {
 abChess = new AbChess("chessboard", options);
 abChess.setFEN();
 
-$('#startBtn').on('click', board.start);
-$('#clearBtn').on('click', board.clear);
+// Activate Empty and Start buttons.
+var clearButton = document.getElementById("clearButton");
+var clearFEN = "8/8/8/8/8/8/8/8 w - - 0 1";
+var startButton = document.getElementById("startButton");
+clearButton.addEventListener("click", function () {
+    if (abChess.isValidFEN(clearFEN)) {
+        abChess.setFEN(clearFEN);
+    }
+});
+startButton.addEventListener("click", function () {
+    abChess.setFEN();
+});
 
 var moves = [
   { white:"e4" , black:"e5" },
