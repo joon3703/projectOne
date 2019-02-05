@@ -9,7 +9,7 @@ var config = {
     };
     firebase.initializeApp(config);
 
-    // Establish database
+// Establish database
 var database = firebase.database();
 
     // Authentication function
@@ -37,4 +37,5 @@ function sendChatMessage() {
         name: firebase.auth().currentUser.displayName,
         message: messageField.value
     }); 
+    
 }
