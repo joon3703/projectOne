@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Chatbox page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Link to authentication CSS file (for Nav bar) -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/auth.css" />
+    <!-- Link to chatbox CSS file -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/chat.css" />    
+    <!-- Link to firebase database -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+
+</head>
+<body style="margin:0;padding:0">
+
+    <!-- ================================================= -->
+    <!-- Nav bar  -->
+    <section class="nav-bar">
+
+        <!-- Log out button (hidden until logged in) -->
+        <button class="logout-btn" id="logout-btn">Log out</button>  
+
+        <!-- Title -->
+        <div class="title"><strong> The Grandmaster </strong></div>
+
+    </section>     
+    
+    <p></p>
+    <!-- ================================================= -->
+
+    <!-- ================================================= -->
+    <!-- Game lobby -->
+    <section class="cloak-lobby">
+        <section class="lobby">
+
+            <!-- Chat box -->
+            <div class="chat-box">
+                <div class="chat-window" id="chat-window">
+                    <ul class="chat-list"></ul>
+                </div>
+
+                <button class="send-btn" id="send">Send</button>  
+                <input class="chat-input" id="message" type="text" placeholder=" Type a message..">
+                    
+            </div>
+
+            <!-- Match buttons -->
+            <button class="find-match">Find match</button>
+            <p></p>
+            <button class="invite-match">Invite a player</button>
+        </section>
+    </section>
+    <!-- ================================================= -->   
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Chat JS file-->
+    <script type="text/javascript" src="js/chat.js"></script>
+</body>
+</html>

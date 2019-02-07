@@ -9,9 +9,10 @@ var config = {
     };
     firebase.initializeApp(config);
 
-// Establish database
+// Reference database
 var database = firebase.database();
 
+// ================================================= //
 // DOM cache for auth functions
 var logEmail = document.getElementById('email');
 var logPassword = document.getElementById('password');
