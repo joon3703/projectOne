@@ -20,7 +20,7 @@ var newNameLast = document.getElementById('lastName');
 var newEmail = document.getElementById('newEmail');
 var newPassword = document.getElementById('newPassword');
 var btnLogin = document.getElementById('login-btn');
-var btnLogout = document.getElementById('logout-btn');
+var btnLogout = $('#logout-btn');
 var btnSignup = $('#signup-btn');
 var btnCreateAcc = document.getElementById('create-btn');
 
@@ -36,12 +36,6 @@ btnLogin.addEventListener('click', e => {
     // Sign in w/ any error console logged
     var signIn = auth.signInWithEmailAndPassword(email, pass);
     signIn.catch(e => console.log(e.message));
-
-    // Show log out button and main page
-    $('.logout-btn').css('display', 'unset');
-    $('.cloak-main').css('display', 'unset');
-    $('.cloak-log').css('display', 'none');
-
 
 });
 
@@ -77,21 +71,25 @@ btnLogout.click(function() {
     // Sign out
     firebase.auth().signOut();
 
-    // Switch back to log in screen
-    $('.cloak-log').css('display', 'unset');
-    $('.logout-btn').css('display', 'none');
-    $('.cloak-main').css('display', 'none');    
-
 });
 
 // Add a realtime listener if user is logged in or not
-
 firebase.auth().onAuthStateChanged(firebaseUser => {
     if(firebaseUser) {
         console.log(firebaseUser);
+
+        // Show log out button and main page
+        $('.logout-btn').css('display', 'unset');
+        $('.cloak-main').css('display', 'unset');
+        $('.cloak-log').css('display', 'none');
     } else {
         console.log('not logged in');
-        btnLogout.classList.add('hide');
+
+        // Switch back to log in screen
+        $('.cloak-log').css('display', 'unset');
+        $('.logout-btn').css('display', 'none');
+        $('.cloak-main').css('display', 'none');    
     }
 });
+
 // ================================================= //
