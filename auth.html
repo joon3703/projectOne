@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Authentication page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Link to authentication CSS file -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/auth.css" />
+    <!-- Link to firebase database -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+
+</head>
+<body style="margin:0;padding:0">
+
+    <!-- ================================================= -->
+    <!-- Nav bar  -->
+    <section class="nav-bar">
+
+        <!-- Log out button (hidden until logged in) -->
+        <button class="logout-btn" id="logout-btn">Log out</button>  
+
+        <!-- Title -->
+        <div class="title"><strong> The Grandmaster </strong></div>
+
+    </section>     
+    
+    <p></p>
+    <!-- ================================================= -->
+
+    <!-- ================================================= -->
+    <!-- Log-in window  -->
+    <section class="cloak-log">
+        <section class="log-in">
+            <strong>Welcome, player!</strong>
+
+            <br><br>
+
+            <!-- Name entry bar and log in button-->
+            <input type="text" class="email" id="email" placeholder="Email">
+
+            <p></p>
+
+            <input type="password" class="password" id="password" placeholder="Password">
+
+            <br>
+
+            <button class="login-btn" id="login-btn">Log-in</button>
+            <button class="signup-btn" id="signup-btn">Sign-up</button>
+
+        </section>
+    </section>
+    <!-- ================================================= -->
+
+    <!-- ================================================= -->
+    <!-- Sign-up window  -->
+    <section class="cloak-signup">
+        <section class="sign-up">
+            <strong>Create an account:</strong>
+    
+            <!-- Fill form for new account -->
+            <p><label for="firstName">First Name: </label></p>
+            <input type="text" class="first-name" id="firstName">
+
+            
+
+            <p><label for="firstName">Last Name: </label></p>
+            <input type="text" class="last-name" id="lastName">
+
+            
+
+            <p><label for="firstName">Email: </label></p>
+            <input type="text" class="email" id="newEmail">
+            
+            
+
+            <p><label for="firstName">Password: </label></p>
+            <input type="text" class="password" id="newPassword">
+
+            <br>
+
+            <button class="create-btn" id="create-btn">Create</button>
+
+        </section>
+    </section>
+    <!-- ================================================= -->
+
+    <!-- ================================================= -->
+    <!-- Game lobby -->
+    <section class="cloak-main">
+        <section class="lobby">
+        <h1> This is the main page </h1>
+    </section>
+    <!-- ================================================= -->
+
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Auth JS file-->
+    <script type="text/javascript" src="js/auth.js"></script>
+</body>
+</html>
