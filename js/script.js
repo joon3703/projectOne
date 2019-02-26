@@ -1,5 +1,21 @@
-var whitePlayer = "White";
-var blackPlayer = "Black";
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyDbUkGBWrOhci0h0LlBUun-nXEa5XIFAU8",
+  authDomain: "projectone-641c8.firebaseapp.com",
+  databaseURL: "https://projectone-641c8.firebaseio.com",
+  projectId: "projectone-641c8",
+  storageBucket: "projectone-641c8.appspot.com",
+  messagingSenderId: "1024028131590"
+  };
+  firebase.initializeApp(config);
+
+// Establish database
+var database = firebase.database();
+
+var whitePlayer = "white logged out";
+var blackPlayer = "black logged out";
+// Starting position as a FEN string
+var position = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
 
 $("#white-login-button").on("click", function(event) {
   if($("#white-sign-in").val() === "") {
@@ -9,7 +25,7 @@ $("#white-login-button").on("click", function(event) {
   whitePlayer = $("#white-sign-in").val().trim();
 
   $("#white-logout-button").text(whitePlayer + " sign-out");
-  disableSignin('.white-input', '#white-login-button', '#white-logout-button');
+  disableSignin('white');
   
   // Update Firebase database for the two players
   // when white logs in.
@@ -24,21 +40,33 @@ $("#black-login-button").on("click", function(event) {
   blackPlayer = $("#black-sign-in").val().trim();
 
   $("#black-logout-button").text(blackPlayer + " sign-out");
-  disableSignin('.black-input', '#black-login-button', '#black-logout-button');
+  disableSignin('black');
   
   // Update Firebase database for the two players
   // when black logs in.
   updateDatabase();
 });
 
-function disableSignin(player, login, logout) {
-  $(player).hide();
-  $(login).hide();
-  $(logout).show();
+function disableSignin(player) {
+  var loginField = '.' + player + '-input';
+  var loginButton = '#' + player + '-login-button';
+  var logoutButton = '#' + player + '-logout-button';
+  $(loginField).hide();
+  $(loginButton).hide();
+  $(logoutButton).show();
+}
+
+function enableSignin(player) {
+  var loginField = '.' + player + '-input';
+  var loginButton = '#' + player + '-login-button';
+  var logoutButton = '#' + player + '-logout-button';
+  $(loginField).show();
+  $(loginButton).show();
+  $(logoutButton).hide();
 }
 
 $("#white-logout-button").on("click", function(event) {
-  whitePlayer = "White";
+  whitePlayer = "white logged out";
   $("#white-logout-button").hide();
   $('#white-sign-in').val('');
   $('#white-sign-in').next().removeClass('active');
@@ -48,7 +76,7 @@ $("#white-logout-button").on("click", function(event) {
 });
 
 $("#black-logout-button").on("click", function(event) {
-  blackPlayer = "Black";
+  blackPlayer = "black logged out";
   $("#black-logout-button").hide();
   $('#black-sign-in').val('');
   $('#black-sign-in').next().removeClass('active');
@@ -64,14 +92,17 @@ function resetGame() {
   $(".black-input").show();
   $("#white-login-button").show();
   $("#black-login-button").show();
-
+  $('.move-number').prepend("<p>&nbsp;</p>");
+  $('.white-moves').prepend("<p class='scoresheet-header-white'>WHITE</p>");
+  $('.black-moves').prepend("<p class='scoresheet-header-black'>BLACK</p>");
 }
 
 function updateDatabase() {
   event.preventDefault();
   database.ref().set({
     whitePlayer: whitePlayer,
-    blackPlayer: blackPlayer
+    blackPlayer: blackPlayer,
+    position: position
   });
 }
 
@@ -107,12 +138,14 @@ var onDrop = function(source, target) {
 var onMoveEnd = function() {
   boardEl.find('.square-' + squareToHighlight)
     .addClass('highlight-black');
+    console.log("Highlighted: " + squareToHighlight);
 };
 
 // update the board position after the piece snap
 // for castling, en passant, pawn promotion
 var onSnapEnd = function() {
-  board.position(game.fen());
+  // board.position(game.fen());
+  // updateDatabase();
 };
 
 var cfg = {
@@ -120,28 +153,83 @@ var cfg = {
   position: 'start',
   onDragStart: onDragStart,
   onDrop: onDrop,
-  onMoveEnd: onMoveEnd,
-  onSnapEnd: onSnapEnd
+  onMoveEnd: onMoveEnd
+  // ,
+  // onSnapEnd: onSnapEnd
 };
 board = ChessBoard('board', cfg);
 
 // Show position in FEN
+// Update position in Firebase
 function clickGetPositionBtn() {
-    
-  $('#fen').html(board.fen());
+  position = board.fen();
+  $('#fen').html(position);
+  updateDatabase();
 }
 
-$('#submitBtn').on('click', clickGetPositionBtn);
+$('#submitMoveBtn').on('click', clickGetPositionBtn);
 
-var onSnapEnd = function() { 
-  console.log(board.position());
-};
+function clearSignInValue(player) {
+  if(player === 'white') {
+    whitePlayer = "white logged out";
+  }
+  if(player === 'black') {
+    blackPlayer = "black logged out";
+  } 
+  $('#' + player + '-sign-in').val('');
+  $('#' + player + '-sign-in').next().removeClass('active');
+
+}
+
+// $('#testBtn').on('click', configureBoard);
+// function configureBoard() {
+//   console.log("Position: " + position);
+//   // Enter any FEN as an argument to this function and it will set the pieces on the board accordingly.
+//   board.position(position);
+// }
+
+database.ref().on("value", function(snapshot) {
+
+  whitePlayer = snapshot.val().whitePlayer;
+  blackPlayer = snapshot.val().blackPlayer;
+  position = snapshot.val().position
+
+  // Change the HTML to reflect current state of the game
+  if (whitePlayer === "white logged out") {
+    clearSignInValue('white');
+    enableSignin('white');
+  } else {
+    $("#white-logout-button").text(whitePlayer + " sign-out");
+    disableSignin('white');
+  }
+
+  if (blackPlayer === "black logged out") {
+    clearSignInValue('black');
+    enableSignin('black');
+  } else  {
+    $("#black-logout-button").text(blackPlayer + " sign-out");
+    disableSignin('black');
+  }
+  
+  board.position(position);
+
+  // Handle the errors
+}, function(errorObject) {
+  console.log("Errors handled: " + errorObject.code);
+});
+
+// var chatRef = database.ref('/chat');
+
+// var onSnapEnd = function() { 
+//   console.log(board.position());
+// };
 
 var board = ChessBoard('board', {
   draggable: true,
   dropOffBoard: 'trash',
-  sparePieces: true,
-  onSnapEnd: onSnapEnd
+  sparePieces: true
+  // ,
+  // onSnapEnd: onSnapEnd
 });
 
 $('#startBtn').on('click', board.start);
@@ -182,39 +270,6 @@ var updateStatus = function() {
 
 $(window).resize(board.resize);
 
-// TODO: Incorporate onChange function to generate the scoresheet 
-// onChange function starts here.
-// Open the console log and move a piece.
-// This function takes in the old position (of the entire board, 
-// written as a FEN string) and the new position.
-// By comparing the two positions, we can write a JS function
-// that returns just the piece moved in Algebraic Chess Notation
-// to populate the columns on the Scoresheet.
-// Algebraic notation: 
-// http://blog.chesshouse.com/how-to-read-and-write-algebraic-chess-notation/
-// Forsyth–Edwards Notation:
-// https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation#Examples
-
-// var onChange = function(oldPos, newPos) {
-//   console.log("Position changed:");
-//   console.log("Old position: " + ChessBoard.objToFen(oldPos));
-//   console.log("New position: " + ChessBoard.objToFen(newPos));
-//   console.log("--------------------");
-// };
-
-// var cfg = {
-//   draggable: true,
-//   position: 'start',
-//   onChange: onChange
-// };
-
-// var board = ChessBoard('board', cfg);
-
-// $('#startPositionBtn').on('click', board.start);
-
-// onChange ends here.
-
-
 // These are sample moves to show how the scoresheet should look.
 var moves = [
   { white:"e4" , black:"e5" },
@@ -239,9 +294,6 @@ var moves = [
 ];
 
 function notateMoves() {
-  $('.move-number').append("<p>&nbsp;</p>");
-  $('.white-moves').append("<p class='scoresheet-header-white'>WHITE</p>");
-  $('.black-moves').append("<p class='scoresheet-header-black'>BLACK</p>");
   for(var i = 0; i < moves.length; i++) {
     $('.move-number').append("<p>" + (i+1) + "</p>");
     $('.white-moves').append("<p>" + moves[i].white + "</p>");
@@ -257,7 +309,70 @@ function adjustForSmallScreen() {
   }
 }
 
+// ================================================= //
+//  GLOBAL VARIABLES: CHATBOX
+// ================================================= //
+
+// Reference chat
+var chatRef = database.ref('/chat');
+
+// DOM cache chat
+var $chatBtn = $('#chatBtn');
+var $chatInput = $('#message');
+var $chatUi = $('#chat-window').find('ul');
+var userName = "";
+
+// ================================================= //
+//  DATABASE LISTENER: CHATBOX
+// ================================================= //
+
+// Create a realtime listener for incoming messages
+chatRef.on('child_added', function(childSnapshot) {
+
+    // Add message value into a variable
+    var message = childSnapshot.val();
+    console.log("msg: " + message);
+
+    // Get name of sender
+    // userName = $logUser.val().trim();
+
+    // Append the new message to the chat window
+    $chatUi.append("<li class='msg-entry'>" + message + "</li>");
+
+});
+
+// ================================================= //
+//  BUTTON EVENT: SEND MESSAGE 
+// ================================================= //
+
+// Create a submit message event (click and keypress:enter)
+function submit() {  
+
+    // Push the current message from the text input onto the database
+    chatRef.push($chatInput.val().trim());
+
+    // Clear text input
+    $chatInput.val('');  
+}
+
+// Trigger submit function: click & enter
+$chatBtn.click(function() {
+    submit();
+});
+
+// What is this?
+// $(document).on('keypress',function(event) {
+//   if(event.which == 13) {
+//     submit();
+//   }
+// });
+
 $( document ).ready(function() {
   notateMoves();
-  resetGame();
+  $('.move-number').prepend("<p>&nbsp;</p>");
+  $('.white-moves').prepend("<p class='scoresheet-header-white'>WHITE</p>");
+  $('.black-moves').prepend("<p class='scoresheet-header-black'>BLACK</p>");
+  // updateDatabase();
+  
+  // resetGame();
 });

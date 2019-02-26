@@ -17,12 +17,16 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- Link to firebase -->
   <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+
+  
   <title>Project One</title>  
 </head>
 
   <body onresize="adjustForSmallScreen()">
     <div class="container">
-      <!-- <div class="row banner"> -->
         <div class="jumbotron row clearfix">
         <h1 class="header col l7">CHESS MATCH</h1>
 
@@ -51,7 +55,8 @@
         <p>FEN: <span id="fen"></span></p>
         <input class="btn" type="button" id="startBtn" value="Start"/>
         <input class="btn" type="button" id="clearBtn" value="Clear"/>
-        <input class="btn" type="button" id="submitBtn" value="Submit"/>
+        <input class="btn" type="button" id="submitMoveBtn" value="submit move"/>
+        
         <div>
           <div class="chatbox">
             <h3>CHAT  <i class="material-icons small">chat_bubble_outline</i></h3>
