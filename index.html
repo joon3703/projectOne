@@ -1,3 +1,106 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en"> 
+  
+<head>
+  <meta charset="utf-8"/>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!--CSS from Chessboard API-->
+  <link rel="stylesheet" type="text/css" href="css/chessboard-0.3.0.css">
+  <!-- Link to local stylesheet -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!-- Link to firebase -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+
+  
+  <title>Project One</title>  
+</head>
+
+  <body onresize="adjustForSmallScreen()">
+    <div class="container">
+        <div class="jumbotron row clearfix">
+        <h1 class="header col l7">CHESS MATCH</h1>
+
+        <div id="user-container"  class="col l5">
+          <div class="row">
+            <div class="white-input input-field col l8">
+              <textarea id="white-sign-in" class="materialize-textarea"></textarea>
+              <label for="white-sign-in">Sign in as WHITE</label>
+            </div>
+            <input class="btn input-field" type="button" id="white-login-button" value="Submit"/>
+          </div>
+          <button id="white-logout-button" class="btn btn-default logout-button"></button>
+          <div class="row second-sign-in">
+          <div class="black-input input-field col l8">
+            <textarea id="black-sign-in" class="materialize-textarea"></textarea>
+            <label for="black-sign-in">Sign in as BLACK</label>
+          </div>
+          <input class="btn input-field" type="button" id="black-login-button" value="Submit"/>
+        </div>
+        <button id="black-logout-button" class="btn btn-default logout-button"></button>
+      </div>
+    </div>
+    <div class="row" style="background:silver">
+      <section class="col l9">
+        <div id="board"></div>
+        <p>FEN: <span id="fen"></span></p>
+        <input class="btn" type="button" id="startBtn" value="Start"/>
+        <input class="btn" type="button" id="clearBtn" value="Clear"/>
+        <input class="btn" type="button" id="submitMoveBtn" value="submit move"/>
+        
+        <div>
+          <div class="chatbox">
+            <h3>CHAT  <i class="material-icons small">chat_bubble_outline</i></h3>
+            <div class="input-field col l10" id="chat-window">
+              <textarea class="materialize-textarea" id="message"></textarea>
+              <label for="message">Message</label>
+              <div class="chat">
+              <ul class="chat-list"></ul>
+              </div>
+            </div>
+            <input class="btn" type="button" id="chatBtn" value="Send"/>
+          </div>
+        </div>  
+      </section>
+      <section class="col l3 scoresheet">
+        <h3 class="scoresheet-header">Scoresheet</h3>
+        <div id="number-column" class="col l1">
+          <p class="move-number"></p>
+        </div>
+        <div id="white-column" class="col l3">
+          <p class="white-moves"></p>
+        </div>
+        <div id="black-column" class="col l3">
+          <p class="black-moves"></p>
+        </div>
+      </section>
+    </div>
+  </div>
+    
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!--Javascripts from Chessboard API-->
+    <script type="text/javascript" src="js/chessboard-0.3.0.js"></script>
+    <!--Here is our JS file-->
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <script type="text/javascript" src="js/jManuel.js"></script>
+
+  </body>
+</html>
+=======
 <!DOCTYPE html>
 <html>
   <head>
@@ -55,3 +158,4 @@
     <script type="text/javascript" src="js/script.js"></script>
   </body>
 </html>
+>>>>>>> 276f8bcfe64e785ca657b00c4057f9a9257680f2
