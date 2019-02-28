@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyDbUkGBWrOhci0h0LlBUun-nXEa5XIFAU8",
@@ -231,9 +232,29 @@ var board = ChessBoard('board', {
   // ,
   // onSnapEnd: onSnapEnd
 });
+=======
+// OUR WORKING JS PART
+// Populate the Chessboard
+var abChess = {};
+var options = {
+    animated: false
+};
+abChess = new AbChess("chessboard", options);
+abChess.setFEN();
+>>>>>>> 276f8bcfe64e785ca657b00c4057f9a9257680f2
 
-$('#startBtn').on('click', board.start);
-$('#clearBtn').on('click', board.clear);
+// Activate Empty and Start buttons.
+var clearButton = document.getElementById("clearButton");
+var clearFEN = "8/8/8/8/8/8/8/8 w - - 0 1";
+var startButton = document.getElementById("startButton");
+clearButton.addEventListener("click", function () {
+    if (abChess.isValidFEN(clearFEN)) {
+        abChess.setFEN(clearFEN);
+    }
+});
+startButton.addEventListener("click", function () {
+    abChess.setFEN();
+});
 
 // Extra stuff
 var pgnEl = $('#pgn');

@@ -63,3 +63,7 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+
+js/.DS_Store~HEAD
+.DS_Store
